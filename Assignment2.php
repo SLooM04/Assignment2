@@ -26,3 +26,67 @@ $data = getApiData($apiUrl);
 $error = $data['error'] ?? null;
 $records = !$error ? $data : [];
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UOB student nationality</title>
+    <style>
+        
+
+
+
+
+
+        
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>UOB student nationality</h1>
+    </header>
+    <div class="container">
+        <?php if ($error): ?>
+            <p class="error">Error: <?php echo htmlspecialchars($error); ?></p>
+        <?php else: ?>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Year</th>
+                        <th>Semester</th>
+                        <th>Program</th>
+                        <th>Nationality</th>
+                        <th>College</th>
+                        <th>Number of Students</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($records as $record): ?>
+                        <tr>
+                            <td><?= htmlspecialchars($record['year'] ?? 'N/A') ?></td>
+                            <td><?= htmlspecialchars($record['semester'] ?? 'N/A') ?></td>
+                            <td><?= htmlspecialchars($record['the_programs'] ?? 'N/A') ?></td>
+                            <td><?= htmlspecialchars($record['nationality'] ?? 'N/A') ?></td>
+                            <td><?= htmlspecialchars($record['colleges'] ?? 'N/A') ?></td>
+                            <td><?= htmlspecialchars($record['number_of_students'] ?? 'N/A') ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        <?php endif; ?>
+    </div>
+    <footer>
+        <p>&copy; <?= date("Y") ?> Students Data Portal. Data provided by
+            <a href="https://data.gov.bh" target="_blank" rel="noopener noreferrer">
+                Bahrain Open Data Portal
+            </a>.
+        </p>
+    </footer>
+
+</body>
+
+</html>
