@@ -134,7 +134,11 @@ $records = !$error ? $data : [];
     </header>
     <div class="container">
         <?php if ($error): ?>
+
+            <!-- If an error occurs, display the error message -->
             <p class="error">Error: <?php echo htmlspecialchars($error); ?></p>
+
+            <!-- Display the table with records if no error -->
         <?php else: ?>
             <table>
                 <thead>
@@ -148,6 +152,8 @@ $records = !$error ? $data : [];
                     </tr>
                 </thead>
                 <tbody>
+
+                     <!-- Loop through each record and display it in the table -->
                     <?php foreach ($records as $record): ?>
                         <tr>
                             <td><?= htmlspecialchars($record['year'] ?? 'N/A') ?></td>
@@ -163,6 +169,7 @@ $records = !$error ? $data : [];
         <?php endif; ?>
     </div>
     <footer>
+         <!-- Footer with copyright and data source -->
         <p>&copy; <?= date("Y") ?> Students Data Portal. Data provided by
             <a href="https://data.gov.bh" target="_blank" rel="noopener noreferrer">
                 Bahrain Open Data Portal
